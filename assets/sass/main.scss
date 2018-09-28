@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+$tablet: 768px;
+
+@import "../../node_modules/bulma/bulma.sass";
+
+time {
+  font-family: $family-monospace;
+}
+
+.content {
+  font-size: 1.125rem;
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+    border-bottom: 2px solid $content-heading-color;
+  }
+  h3 {
+    font-size: 1.5rem;
+    border-bottom: 1px solid $content-heading-color;
+  }
+  h4 {
+    font-size: 1.25rem;
+    border-bottom: 1px dashed $content-heading-color;
+  }
+  h5 {
+    font-size: 1.125rem;
+  }
+  h6 {
+    font-size: 1rem;
+  }
+}
+
+main {
+  margin-top: 3rem;
+}
+
+.section:first-of-type {
+  padding-top: 1rem;
+}

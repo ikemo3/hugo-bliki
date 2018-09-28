@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  {{ "<!-- _default/baseof.html start -->" | safeHTML }}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{ block "title" . }}{{ .Page.Title }} - {{ .Site.Title }}{{ end }}</title>
+    {{- $sass := resources.Get "sass/custom.scss" }}
+    {{- $style := $sass | resources.ToCSS | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
+
+    {{ "<!-- partials/custom-head.html start -->" | safeHTML }}
+    {{- partial "custom-head" }}
+    {{ "<!-- partials/custom-head.html end -->" | safeHTML }}
+
+    {{ "<!-- _internal/google_analytics.html start -->" | safeHTML }}
+    {{- template "_internal/google_analytics.html" . }}
+    {{ "<!-- _internal/google_analytics.html end -->" | safeHTML }}
+
+    {{ "<!-- _internal/schema.html start -->" | safeHTML }}
+    {{- template "_internal/schema.html" . }}
+    {{ "<!-- _internal/schema.html end -->" | safeHTML }}
+
+    {{ "<!-- _internal/opengraph.html start -->" | safeHTML }}
+    {{ template "_internal/opengraph.html" . }}
+    {{ "<!-- _internal/opengraph.html end -->" | safeHTML }}
+
+    {{ .Hugo.Generator }}
+  </head>
+  <body>
+    {{ partial "menu" . }}
+
+    <main>
+    {{ block "main" . }}
+    {{ end }}
+    </main>
+
+    {{- $bulmajs := resources.Get "js/bulma.js" | fingerprint -}}
+    <script src="{{ $bulmajs.RelPermalink }}"></script>
+  </body>
+  {{ "<!-- _default/baseof.html end -->" | safeHTML }}
+</html>

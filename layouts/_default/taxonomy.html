@@ -1,0 +1,24 @@
+{{ define "title" -}}
+{{ partialCached "function/page-title-with-section" . .URL }} - {{ .Site.Title }}
+{{- end }}
+
+{{ define "main" }}
+  <header class="has-text-centered">
+    <h1 class="title">{{ partialCached "function/page-title-with-section" . .URL }}</h1>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="content">
+        {{ .Content }}
+        <ul>
+          {{- range .Data.Pages }}
+          <li>
+            <a href="{{ .URL }}">{{ .Title }}</a>
+          </li>
+          {{- end }}
+        </ul>
+      </div>
+    </div>
+  </section>
+{{ end }}

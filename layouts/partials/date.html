@@ -1,0 +1,4 @@
+      投稿日: <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      {{- if ne .Date .Lastmod }}
+      更新日: <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006-01-02" }}</time>
+      {{- end -}}

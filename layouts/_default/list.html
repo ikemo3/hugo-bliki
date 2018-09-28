@@ -1,0 +1,50 @@
+{{ define "title" -}}
+{{ .Page.Title }} - {{ .Site.Title }}
+{{- end }}
+
+{{ define "main" }}
+  {{ "<!-- _default/list.html start -->" | safeHTML }}
+  <header class="has-text-centered">
+    <h1 class="title">{{ .Page.Title }}</h1>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="content">
+        {{ .Content }}
+
+        {{ if .Params.grouping }}
+          {{ range $tagName, $tagPages := .Site.Taxonomies.tags -}}
+            {{ $filteredTagPages := where (where $tagPages "Kind" "page") "Section" $.Section -}}
+            {{ if $filteredTagPages -}}
+              {{ $tagPage := $.Site.GetPage "taxonomy" (print "tags/" $tagName) -}}
+              <h3>{{ partialCached "function/page-title" $tagPage $tagPage.URL }}</h3>
+              <ul class="container">
+              {{ range $filteredTagPages -}}
+                {{ .Render "li" -}}
+              {{ end }}
+              </ul>
+            {{ end -}}
+          {{ end -}}
+
+          {{ $noTagPages := where (where (where $.Site.Pages "Kind" "page") "Section" $.Section) ".Params.tags" nil -}}
+          {{ if $noTagPages -}}
+            <h3>タグなし</h3>
+            <ul class="container">
+            {{ range $noTagPages -}}
+              {{ .Render "li" }}
+            {{ end -}}
+            </ul>
+          {{ end -}}
+        {{ else }}
+        <ul>
+          {{- range .Data.Pages.ByTitle }}
+          {{ .Render "li" }}
+          {{- end }}
+        </ul>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ "<!-- _default/list.html end -->" | safeHTML }}
+{{ end }}

@@ -1,0 +1,63 @@
+{{ define "title" }}
+{{- .Site.Title -}}
+{{ end }}
+
+{{ define "main" }}
+    <header class="has-text-centered">
+      <h1 class="title">{{ .Page.Title }}</h1>
+      <span class="subtitle is-6">
+        <span>最終更新:
+          <time datetime="{{ .Site.LastChange.Format "2006-01-02" }}">
+            {{ .Site.LastChange.Format "2006-01-02" }}
+          </time>
+        </span>
+        <span>
+          現在の記事数: {{ (where .Data.Pages "Type" "post") | len }}
+        </span>
+      </span>
+    </header>
+
+    <section class="section">
+      <div class="container">
+        <div class="content">
+          <h2>最新記事一覧</h2>
+
+          <ul>
+            {{- $latestPageNum := (default 10 .Site.Params.latestPageNum) }}
+            {{- $latestPageBy := (default "lastmod" .Site.Params.latestPageBy) }}
+            {{- if (eq $latestPageBy "date") }}
+              {{- $pages := (where .Data.Pages.ByDate.Reverse "Type" "post") }}
+              {{- range first $latestPageNum $pages }}
+                <li><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time> <a href="{{ .URL }}">
+                {{- if .Site.Params.showSectionToTitle }}
+                  {{- partialCached "function/page-title-with-section" . .URL }}
+                {{- else }}
+                  {{- partialCached "function/page-title" . .URL }}
+                {{- end }}
+                </a></li>{{ "" -}}
+              {{- end }}
+            {{- else }}
+              {{- $pages := (where .Data.Pages.ByLastmod.Reverse "Type" "post") }}
+              {{- range first $latestPageNum $pages }}
+                <li><time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006-01-02" }}</time> <a href="{{ .URL }}">
+                {{- if .Site.Params.showSectionToTitle }}
+                  {{- partialCached "function/page-title-with-section" . .URL }}
+                {{- else }}
+                  {{- partialCached "function/page-title" . .URL }}
+                {{- end }}
+                </a></li>{{ "" -}}
+              {{- end }}
+            {{- end }}
+
+          </ul>
+        </div>
+
+        {{- if .Site.Params.showTagsOnTopPage }}
+        <hr />
+        {{- range $name, $taxonomy := .Site.Taxonomies.tags }}
+        {{- partialCached "tag" (dict "site" $.Site "tag" $name) $name }}
+        {{- end }}
+        {{- end }}
+      </div>
+    </section>
+{{ end }}

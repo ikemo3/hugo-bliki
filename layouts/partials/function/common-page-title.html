@@ -1,0 +1,32 @@
+<!--
+  ページのタイトルを取得する。
+
+  * タグページが渡された場合
+    * dicセクションに同じページがあるときは、そのタイトルを返す。
+    * dicセクションにない場合は、ページのタイトルを返す。
+  * それ以外の場合
+    * ページのタイトルを返す。
+ -->
+{{- if (eq .Kind "taxonomy") -}}
+  <!-- タグ名を取得 -->
+  {{- $tagName := .Data.Term -}}
+
+  <!-- 辞書ページを取得 -->
+  {{- $title := "" }}
+  {{- range .Site.Params.getTagTitleFromSections }}
+    {{- $sectionPage := $.Site.GetPage "page" (print . "/" $tagName ".md") }}
+
+    <!-- 空のときはタイトルを上書き -->
+    {{- if (and $sectionPage (eq $title "")) }}
+      {{- $title = $sectionPage.Title }}
+    {{- end }}
+  {{- end }}
+
+  {{- if $title }}
+    {{- $title }}
+  {{- else -}}
+    {{- .Title }}
+  {{- end }}
+{{- else -}}
+  {{- .Title -}}
+{{- end -}}

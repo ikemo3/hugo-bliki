@@ -1,0 +1,35 @@
+{{ "<!-- partials/menu.html start -->" | safeHTML }}
+    <nav class="navbar has-shadow {{ (default "is-white" .Site.Params.navbarColor) }}">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="{{ .Site.BaseURL | relLangURL | safeURL }}">{{ .Site.Title }}</a>
+        <a class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end">
+          {{- range .Site.Menus.main }}
+            {{- if .HasChildren }}
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">{{ .Name }}</a>
+
+            <div class="navbar-dropdown is-right">
+              {{- range .Children }}
+              <a class="navbar-item" href="{{ partialCached "function/menu-url" . .Name }}">{{ .Name }}</a>
+              {{- end }}
+            </div>
+          </div>
+            {{- else }}
+              {{- if $.IsMenuCurrent "main" . }}
+          <a class="navbar-item" href="{{ partialCached "function/menu-url" . .Name }}">{{ .Name }}</a>
+              {{- else }}
+          <a class="navbar-item" href="{{ partialCached "function/menu-url" . .Name }}">{{ .Name }}</a>
+              {{- end }}
+            {{- end }}
+          {{- end }}
+        </div>
+      </div>
+    </nav>
+    {{ "<!-- partials/menu.html end -->" | safeHTML -}}

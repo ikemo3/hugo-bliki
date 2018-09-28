@@ -1,0 +1,67 @@
+{{ define "title" -}}
+{{- partialCached "function/page-title-with-section" . .URL }} | {{ .Site.Title }}
+{{- end }}
+
+{{ define "main" }}
+    {{ "<!-- _default/single.html start -->" | safeHTML }}
+    <header class="has-text-centered">
+      <h1 class="title">{{ partialCached "function/page-title-with-section" . .URL }}</h1>
+
+      <div>
+        {{ "<!-- partials/date.html start -->" | safeHTML }}
+        {{ partial "date" . }}
+        {{ "<!-- partials/date.html end -->" | safeHTML }}
+      </div>
+
+      {{ "<!-- partials/tags.html start -->" | safeHTML }}
+      {{- range .Params.tags }}
+      <div class="tag">
+          {{ partialCached "tag" (dict "site" $.Site "tag" .) . }}
+      </div>
+      {{- end }}
+      {{ "<!-- partials/tags.html end -->" | safeHTML }}
+    </header>
+
+    {{- $noadsense := (default false .Params.noadsense) }}
+    {{- if (not $noadsense) }}
+    <aside>
+    {{ partialCached "adsense" . }}
+    </aside>
+    {{- end }}
+
+    <section class="section">
+      <div class="columns">
+        <div class="column"></div>
+        <div class="column is-8-desktop is-8-tablet">
+
+          {{- $showTocDefault := (default false .Site.Params.showTocDefault) }}
+          {{- $showTocArticle := (default $showTocDefault .Params.toc) }}
+          {{- $showTocWords := (default 200 .Site.Params.showTocWords) }}
+          {{- if (and (gt .WordCount $showTocWords) $showTocArticle) }}
+          <nav class="content">
+            <h2 data-toc-ignore="true">目次</h2>
+            {{ .TableOfContents }}
+          </nav>
+          {{- end }}
+
+          <div id="content" class="content">
+            {{ "<!-- .Content start -->" | safeHTML }}
+            {{ .Content }}
+            {{ "<!-- .Content end -->" | safeHTML }}
+
+            {{ "<!-- partials/extension/single.content.after.html start -->" | safeHTML }}
+            {{- partial "extension/single.content.after.html" . }}
+            {{ "<!-- partials/extension/single.content.after.html end -->" | safeHTML }}
+          </div>
+        </div>
+        <div class="column"></div>
+      </div>
+    </section>
+
+    {{- if (not $noadsense) }}
+    <aside>
+    {{ partialCached "adsense" . }}
+    </aside>
+    {{- end }}
+    {{ "<!-- _default/single.html end -->" | safeHTML }}
+{{ end }}

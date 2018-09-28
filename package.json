@@ -1,0 +1,17 @@
+{
+  "name": "shogi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "bulma": "^0.7.1"
+  },
+  "scripts": {
+    "css-build": "node-sass --omit-source-map-url assets/sass/main.scss assets/css/main.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch"
+  },
+  "author": "",
+  "license": "ISC"
+}
