@@ -22,17 +22,16 @@
       {{ "<!-- partials/tags.html end -->" | safeHTML }}
     </header>
 
-    {{- $noadsense := (default false .Params.noadsense) }}
-    {{- if (not $noadsense) }}
-    <aside>
-    {{ partialCached "adsense" . }}
-    </aside>
-    {{- end }}
-
     <section class="section">
       <div class="columns">
         <div class="column"></div>
         <div class="column is-8-desktop is-8-tablet">
+          {{- $noadsense := (default false .Params.noadsense) }}
+          {{- if (not $noadsense) }}
+          <aside>
+          {{ partialCached "adsense" . }}
+          </aside>
+          {{- end }}
 
           {{- $showTocDefault := (default false .Site.Params.showTocDefault) }}
           {{- $showTocArticle := (default $showTocDefault .Params.toc) }}
@@ -53,15 +52,15 @@
             {{- partial "extension/single.content.after.html" . }}
             {{ "<!-- partials/extension/single.content.after.html end -->" | safeHTML }}
           </div>
+
+          {{- if (not $noadsense) }}
+          <aside>
+          {{ partialCached "adsense" . }}
+          </aside>
+          {{- end }}
         </div>
         <div class="column"></div>
       </div>
     </section>
-
-    {{- if (not $noadsense) }}
-    <aside>
-    {{ partialCached "adsense" . }}
-    </aside>
-    {{- end }}
     {{ "<!-- _default/single.html end -->" | safeHTML }}
 {{ end }}
