@@ -1,0 +1,4 @@
+<li>
+  <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006-01-02" }}</time>
+  <a href="{{ .URL }}">{{ partialCached "function/page-title" . .URL }}</a>
+</li>{{ "" -}}

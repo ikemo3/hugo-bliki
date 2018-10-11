@@ -4,6 +4,7 @@
 
 {{ define "main" }}
   {{ "<!-- _default/list.html start -->" | safeHTML }}
+  {{- $orderby := (default "title" .Params.orderby) }}
   <header class="has-text-centered">
     <h1 class="title">{{ .Page.Title }}</h1>
   </header>
@@ -38,8 +39,14 @@
           {{ end -}}
         {{ else }}
         <ul>
-          {{- range .Data.Pages.ByTitle }}
-          {{ .Render "li" }}
+          {{- if (eq $orderby "date") }}
+            {{- range .Data.Pages.ByDate.Reverse }}
+            {{ .Render "li-with-date" }}
+            {{- end }}
+          {{- else }}
+            {{- range .Data.Pages.ByTitle }}
+            {{ .Render "li" }}
+            {{- end }}
           {{- end }}
         </ul>
         {{ end }}

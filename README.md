@@ -35,6 +35,10 @@ https://bulma.io/documentation/customize/with-node-sass/
 セクションの`_index.md`に設定します。
 
 * `showtitle`: タイトルにセクション名を設定するかどうか(デフォルト: true)
+* `grouping`: グループ化して表示するかどうか(デフォルト: false)
+* `orderby`: ソート方法(デフォルト: `title`)
+    * `title`: タイトル
+    * `date`: 作成日
 
 ### 記事
 
