@@ -12,10 +12,6 @@ https://bulma.io/documentation/customize/with-node-sass/
 
 * `tagMark`: タグに付くマーク
     * 例: 将棋のコマ(先手): "&#x2617;"
-* `latestPageNum`: トップページに表示される最新の数(デフォルト: 10)
-* `latestPageBy`: トップページに表示される記事のソート順(デフォルト: lastmod)
-    * 現在指定可能なのは`date`のみ。
-* `showTagsOnTopPage`: トップページにタグ一覧を出力するかどうか(デフォルト: false)
 * `showSectionToTitle`: タイトルにセクション名を付けるかどうか(デフォルト: false)
 * `showTocDefault`: デフォルトで目次を表示するかどうか(デフォルト: false)
 * `showTocWords`: 目次を表示するかどうかの基準(デフォルト: 200語)
@@ -23,6 +19,16 @@ https://bulma.io/documentation/customize/with-node-sass/
     * https://bulma.io/documentation/components/navbar/
 * `getTagTitleFromSections`: タグ名を上書きするセクション(Array)
 * `useAdsense`: Google AdSenseを使用可能にするかどうか(デフォルト: true)
+
+#### トップページ
+
+* `topPageType`: トップページのタイプ(デフォルト: `latestArticles`)
+    * `latestArticles`: 最新記事一覧
+    * `contentsOnly`: コンテンツのみ
+* `latestPageNum`: トップページに表示される最新の数(デフォルト: 10)
+* `latestPageBy`: トップページに表示される記事のソート順(デフォルト: lastmod)
+    * 現在指定可能なのは`date`のみ。
+* `showTagsOnTopPage`: トップページにタグ一覧を出力するかどうか(デフォルト: false)
 
 ### セクション
 
