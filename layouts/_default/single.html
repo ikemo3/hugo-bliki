@@ -26,8 +26,9 @@
       <div class="columns">
         <div class="column"></div>
         <div class="column is-8-desktop is-8-tablet">
+          {{- $useAdsense := (default true .Site.Params.useAdsense) }}
           {{- $noadsense := (default false .Params.noadsense) }}
-          {{- if (not $noadsense) }}
+          {{- if (and $useAdsense (not $noadsense)) }}
           <aside>
           {{ partialCached "adsense" . }}
           </aside>

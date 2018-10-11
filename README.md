@@ -22,6 +22,7 @@ https://bulma.io/documentation/customize/with-node-sass/
 * `navbarColor`: Navbarのカラー
     * https://bulma.io/documentation/components/navbar/
 * `getTagTitleFromSections`: タグ名を上書きするセクション(Array)
+* `useAdsense`: Google AdSenseを使用可能にするかどうか(デフォルト: true)
 
 ### セクション
 
@@ -33,6 +34,7 @@ https://bulma.io/documentation/customize/with-node-sass/
 
 各記事に設定します。
 
+* `noadsense`: trueにすると、その記事ではGoogle AdSenseを表示しません。
 * `toc`: 目次を表示するかどうか
     * config.tomlの `showTableOfContents` より優先されます。
 
