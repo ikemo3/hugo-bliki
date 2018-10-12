@@ -1,4 +1,4 @@
-{{- $latestPageNum := (default 10 .Site.Params.recentPageNum) }}
+{{- $latestPageNum := 5 }}
 {{- $pages := (where .Site.Pages.ByDate.Reverse "Type" "post") }}
 <div class="content">
   <h3>最新記事</h3>
