@@ -19,6 +19,9 @@ https://bulma.io/documentation/customize/with-node-sass/
     * https://bulma.io/documentation/components/navbar/
 * `getTagTitleFromSections`: タグ名を上書きするセクション(Array)
 * `useAdsense`: Google AdSenseを使用可能にするかどうか(デフォルト: true)
+* `siteLayout`: サイトの全体的なレイアウト
+    * `blog`: ブログライク
+    * `bliki`: ブログ + Wikiライク
 
 #### トップページ
 

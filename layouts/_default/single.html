@@ -22,9 +22,12 @@
       {{ "<!-- partials/tags.html end -->" | safeHTML }}
     </header>
 
+    {{ $siteLayout := (default "blog" .Site.Params.siteLayout) }}
     <section class="section">
       <div class="columns">
+        {{- if (not (eq $siteLayout "blog")) }}
         <div class="column"></div>
+        {{- end }}
         <div class="column is-8-desktop is-8-tablet">
           {{- $useAdsense := (default true .Site.Params.useAdsense) }}
           {{- $noadsense := (default false .Params.noadsense) }}
@@ -60,7 +63,11 @@
           </aside>
           {{- end }}
         </div>
-        <div class="column"></div>
+        <div class="column">
+          {{- if (eq $siteLayout "blog") }}
+            {{- partialCached "recent" . }}
+          {{- end }}
+        </div>
       </div>
     </section>
     {{ "<!-- _default/single.html end -->" | safeHTML }}

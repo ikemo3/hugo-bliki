@@ -1,0 +1,14 @@
+{{- $latestPageNum := (default 10 .Site.Params.recentPageNum) }}
+{{- $pages := (where .Site.Pages.ByDate.Reverse "Type" "post") }}
+<div class="content">
+  <h3>最新記事</h3>
+  <ul class="is-size-6">
+    {{- range first $latestPageNum $pages }}
+    <li>
+      <a href="{{ .URL }}">
+        {{- partialCached "function/page-title" . .URL }}
+      </a>
+    </li>{{ "" -}}
+    {{- end }}
+  </ul>
+</div>
