@@ -66,6 +66,7 @@
         <div class="column">
           {{- if (eq $siteLayout "blog") }}
             {{- partialCached "recent" . }}
+            {{- partial "related" . }}
           {{- end }}
         </div>
       </div>
