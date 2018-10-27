@@ -17,15 +17,15 @@
 
             <div class="navbar-dropdown is-right">
               {{- range .Children }}
-              <a class="navbar-item" href="{{ partialCached "function/menu-url" . .Name }}">{{ .Name }}</a>
+              <a class="navbar-item" href="{{ partialCached "function/menu-url" . .Name | safeURL }}">{{ .Name }}</a>
               {{- end }}
             </div>
           </div>
             {{- else }}
               {{- if $.IsMenuCurrent "main" . }}
-          <a class="navbar-item" href="{{ partialCached "function/menu-url" . .Name }}">{{ .Name }}</a>
+          <a class="navbar-item" href="{{ partialCached "function/menu-url" . .Name | safeURL }}">{{ .Name }}</a>
               {{- else }}
-          <a class="navbar-item" href="{{ partialCached "function/menu-url" . .Name }}">{{ .Name }}</a>
+          <a class="navbar-item" href="{{ partialCached "function/menu-url" . .Name | safeURL }}">{{ .Name }}</a>
               {{- end }}
             {{- end }}
           {{- end }}
