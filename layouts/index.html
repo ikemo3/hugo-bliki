@@ -31,11 +31,7 @@
               {{- $pages := (where .Data.Pages.ByDate.Reverse "Type" "post") }}
               {{- range first $latestPageNum $pages }}
                 <li><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time> <a href="{{ .URL }}">
-                {{- if .Site.Params.showSectionToTitle }}
-                  {{- partialCached "function/page-title-with-section" . .URL }}
-                {{- else }}
-                  {{- partialCached "function/page-title" . .URL }}
-                {{- end }}
+                {{- partialCached "function/page-title-with-section" . .URL }}
                 </a></li>{{ "" -}}
               {{- end }}
             {{- else }}

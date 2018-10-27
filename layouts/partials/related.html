@@ -7,7 +7,7 @@
     {{- range . }}
     <li>
       <a href="{{ .URL }}">
-        {{- partialCached "function/page-title" . .URL }}
+        {{- partialCached "function/page-title-with-section" . .URL }}
       </a>
     </li>{{ "" -}}
     {{- end }}
