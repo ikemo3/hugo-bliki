@@ -1,10 +1,10 @@
 <!-- セクション名もしくはタクソノミ名 -->
 {{- if (eq .Kind "taxonomy") -}}
   {{- $taxonomyPage := .Site.GetPage "taxonomy" .Data.Plural -}}
-  {{- (print $taxonomyPage.Title ": ") -}}
+  {{- $taxonomyPage.Title -}}
 {{- else if (ne .Section "") -}}
   {{- $sectionPage := .Site.GetPage "section" .Section -}}
   {{- with (default true $sectionPage.Params.showtitle) }}
-    {{- (print $sectionPage.Title ": ") -}}
+    {{- $sectionPage.Title -}}
   {{- end }}
 {{- end -}}

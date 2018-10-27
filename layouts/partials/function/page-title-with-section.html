@@ -1,5 +1,4 @@
 {{- partial "function/draft" . -}}
 {{- if .Site.Params.showSectionToTitle }}
-{{- partialCached "function/section-name" . .URL -}}
-{{- end }}
+{{- partialCached "function/section-name" . .URL -}}: {{ end }}
 {{- partialCached "function/common-page-title" . .URL -}}

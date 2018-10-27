@@ -1,7 +1,9 @@
 {{- $latestPageNum := 5 }}
 {{- $pages := (where (where .Site.Pages.ByDate.Reverse "Type" "post") "Section" .Section) }}
 <div class="content">
-  <h3>最新記事</h3>
+  <h3>{{ i18n "recentArticle" }}
+    {{- if .Site.Params.showSectionToTitle }}({{ partialCached "function/section-name" . .Section }}){{ end }}
+  </h3>
   <ul class="is-size-6">
     {{- range first $latestPageNum $pages }}
     <li>
