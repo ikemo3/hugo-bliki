@@ -1,4 +1,7 @@
 {{- partial "function/draft" . -}}
-{{- if .Site.Params.showSectionToTitle }}
-{{- partialCached "function/section-name" . .URL -}}: {{ end }}
+{{- $sectionPage := .Site.GetPage "section" .Section }}
+{{- $showtitle := (default true $sectionPage.Params.showtitle) }}
+{{- if (and .Site.Params.showSectionToTitle $showtitle) }}
+  {{ partialCached "function/section-name" . .URL -}}: 
+{{ end }}
 {{- partialCached "function/common-page-title" . .URL -}}
