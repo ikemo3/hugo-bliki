@@ -38,6 +38,9 @@
 
     {{- $bulmajs := resources.Get "js/bulma.js" | fingerprint -}}
     <script src="{{ $bulmajs.RelPermalink }}"></script>
+    {{ "<!-- partials/extension/foot.html start -->" | safeHTML }}
+    {{- partial "extension/foot" . }}
+    {{ "<!-- partials/extension/foot.html end -->" | safeHTML }}
   </body>
   {{ "<!-- _default/baseof.html end -->" | safeHTML }}
 </html>
