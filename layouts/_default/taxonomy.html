@@ -3,6 +3,8 @@
 {{- end }}
 
 {{ define "main" }}
+{{- $taxonomyParams := .Site.Params.taxonomy }}
+{{- $groupBySection := $taxonomyParams.groupbysection }}
   <header class="has-text-centered">
     <h1 class="title">{{ partialCached "function/page-title-with-section" . .URL }}</h1>
   </header>
@@ -11,6 +13,27 @@
     <div class="container">
       <div class="content">
         {{ .Content }}
+        {{- if $groupBySection }}
+          <!-- 他セクションの内容を表示 -->
+          <ul>
+          {{- range .Site.Sections }}
+            {{- $sectionPage := .Site.GetPage "page" (print .Section "/" $.Data.Term ".md") }}
+            {{- with $sectionPage }}
+              <li><a href="{{ .URL }}">{{ partialCached "function/page-title-with-section" . .URL }}</a></li>
+            {{- end }}
+          {{- end }}
+          </ul>
+
+          {{ range .Data.Pages.GroupBy "Section" -}}
+            {{ $sectionPage := $.Site.GetPage "section" .Key }}
+            <h3>{{ $sectionPage.Title }}</h3>
+            <ul class="container">
+            {{- range .Pages.ByTitle }}
+              <li><a href="{{ .URL }}">{{ partialCached "function/page-title" . .URL }}</a></li>
+            {{- end }}
+            </ul>
+          {{ end -}}
+        {{- else }}
         <ul>
           {{- range .Data.Pages }}
           <li>
@@ -18,6 +41,7 @@
           </li>
           {{- end }}
         </ul>
+        {{- end }}
       </div>
     </div>
   </section>

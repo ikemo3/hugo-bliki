@@ -33,6 +33,12 @@ https://bulma.io/documentation/customize/with-node-sass/
     * 現在指定可能なのは`date`のみ。
 * `showTagsOnTopPage`: トップページにタグ一覧を出力するかどうか(デフォルト: false)
 
+#### Taxonomy
+
+`[params.taxonomy]`に設定します。
+
+* groupBySection: セクションごとにグループ化するかどうか
+
 ### セクション
 
 セクションの`_index.md`に設定します。
