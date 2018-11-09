@@ -1,6 +1,6 @@
 {{- $latestPageNum := 5 }}
 {{- $pages := (where (where .Site.Pages.ByDate.Reverse "Type" "post") "Section" .Section) }}
-<div class="content">
+<nav class="content">
   <h3 data-toc-ignore="true">{{ i18n "recentArticle" }}
     {{- if .Site.Params.showSectionToTitle }}({{ partialCached "function/section-name" . .Section }}){{ end }}
   </h3>
@@ -13,4 +13,4 @@
     </li>{{ "" -}}
     {{- end }}
   </ul>
-</div>
+</nav>

@@ -1,7 +1,7 @@
 {{- $relatedPageNum := 5 }}
 {{- $related := .Site.RegularPages.Related . | first $relatedPageNum }}
 {{- with $related }}
-<div class="content">
+<nav class="content">
   <h3 data-toc-ignore="true">関連記事</h3>
   <ul class="is-size-6">
     {{- range . }}
@@ -12,5 +12,5 @@
     </li>{{ "" -}}
     {{- end }}
   </ul>
-</div>
+</nav>
 {{- end }}
