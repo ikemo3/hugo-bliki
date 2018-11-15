@@ -1,7 +1,7 @@
 {
-  "name": "shogi",
+  "name": "hugo-bliki",
   "version": "1.0.0",
-  "description": "",
+  "description": "Bliki(Blog + Wiki) like theme for Hugo.",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
@@ -12,6 +12,6 @@
     "css-watch": "npm run css-build -- --watch",
     "start": "npm run css-watch"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Hideki Ikemoto <ikemo333@gmail.com> (https://github.com/ikemo3)",
+  "license": "MIT"
 }
