@@ -1,3 +1,8 @@
+# hugo-bliki
+
+[Bliki](http://bliki-ja.github.io/WhatIsaBliki/)ライクなサイトを作成するためのテーマです。
+(ブログとしても使えます)
+
 # CSSの作成方法
 
 ```bash
