@@ -53,6 +53,7 @@ https://bulma.io/documentation/customize/with-node-sass/
 * `orderby`: ソート方法(デフォルト: `title`)
     * `title`: タイトル
     * `date`: 作成日
+    * `weight`: weight
 
 ### 記事
 

@@ -43,6 +43,10 @@
             {{- range .Data.Pages.ByDate.Reverse }}
             {{ .Render "li-with-date" }}
             {{- end }}
+          {{- else if (eq $orderby "weight") }}
+            {{- range .Data.Pages.ByWeight }}
+            {{ .Render "li" }}
+            {{- end }}
           {{- else }}
             {{- range .Data.Pages.ByTitle }}
             {{ .Render "li" }}
