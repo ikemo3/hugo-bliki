@@ -23,10 +23,10 @@
     {{ "<!-- _internal/schema.html end -->" | safeHTML }}
 
     {{ with .OutputFormats.Get "atom" -}}
-      {{ printf `<link rel="%s" type="application/atom+xml" href="%s" title="%s" />` .Rel .Permalink $.Site.Title | safeHTML }}
+      {{ printf `<link rel="%s" type="application/atom+xml" href="%s" title="%s - Atom" />` .Rel .Permalink $.Site.Title | safeHTML }}
     {{ end -}}
     {{ with .OutputFormats.Get "rss" -}}
-      {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+      {{ printf `<link rel="%s" type="%s" href="%s" title="%s - RSS" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
     {{ end -}}
 
     {{ "<!-- _internal/opengraph.html start -->" | safeHTML }}
