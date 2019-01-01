@@ -68,6 +68,10 @@
             {{- partialCached "recent" . .Section }}
             {{- partial "related" . }}
           {{- end }}
+
+          {{ "<!-- partials/extension/single.right.after.html start -->" | safeHTML }}
+          {{- partial "extension/single.right.after.html" . }}
+          {{ "<!-- partials/extension/single.right.after.html end -->" | safeHTML }}
         </div>
       </div>
     </section>
