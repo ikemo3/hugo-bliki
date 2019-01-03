@@ -48,6 +48,10 @@
           {{- end }}
 
           <div id="content" class="content">
+            {{ "<!-- partials/extension/single.content.before.html start -->" | safeHTML }}
+            {{- partial "extension/single.content.before.html" . }}
+            {{ "<!-- partials/extension/single.content.before.html end -->" | safeHTML }}
+
             {{ "<!-- .Content start -->" | safeHTML }}
             {{ .Content }}
             {{ "<!-- .Content end -->" | safeHTML }}
