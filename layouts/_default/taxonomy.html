@@ -1,12 +1,12 @@
 {{ define "title" -}}
-{{ partialCached "function/page-title-with-section" . .URL }} - {{ .Site.Title }}
+{{ partialCached "function/page-title-with-section" . .RelPermalink }} - {{ .Site.Title }}
 {{- end }}
 
 {{ define "main" }}
 {{- $taxonomyParams := .Site.Params.taxonomy }}
 {{- $groupBySection := $taxonomyParams.groupbysection }}
   <header class="has-text-centered">
-    <h1 class="title">{{ partialCached "function/page-title-with-section" . .URL }}</h1>
+    <h1 class="title">{{ partialCached "function/page-title-with-section" . .RelPermalink }}</h1>
   </header>
 
   <section class="section">
@@ -19,7 +19,7 @@
           {{- range .Site.Sections }}
             {{- $sectionPage := .Site.GetPage "page" (print .Section "/" $.Data.Term ".md") }}
             {{- with $sectionPage }}
-              <li><a href="{{ .URL }}">{{ partialCached "function/page-title-with-section" . .URL }}</a></li>
+              <li><a href="{{ .RelPermalink }}">{{ partialCached "function/page-title-with-section" . .RelPermalink }}</a></li>
             {{- end }}
           {{- end }}
           </ul>
@@ -29,7 +29,7 @@
             <h3>{{ $sectionPage.Title }}</h3>
             <ul class="container">
             {{- range .Pages.ByTitle }}
-              <li><a href="{{ .URL }}">{{ partialCached "function/page-title" . .URL }}</a></li>
+              <li><a href="{{ .RelPermalink }}">{{ partialCached "function/page-title" . .RelPermalink }}</a></li>
             {{- end }}
             </ul>
           {{ end -}}
@@ -37,7 +37,7 @@
         <ul>
           {{- range .Data.Pages }}
           <li>
-            <a href="{{ .URL }}">{{ .Title }}</a>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
           </li>
           {{- end }}
         </ul>

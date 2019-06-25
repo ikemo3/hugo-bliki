@@ -2,6 +2,6 @@
 {{- $sectionPage := .Site.GetPage "section" .Section }}
 {{- $showtitle := (default true $sectionPage.Params.showtitle) }}
 {{- if (and .Site.Params.showSectionToTitle $showtitle) }}
-  {{ partialCached "function/section-name" . .URL -}}: 
+  {{ partialCached "function/section-name" . .RelPermalink -}}: 
 {{ end }}
-{{- partialCached "function/common-page-title" . .URL -}}
+{{- partialCached "function/common-page-title" . .RelPermalink -}}

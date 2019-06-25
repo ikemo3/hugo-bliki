@@ -32,18 +32,18 @@
             {{- if (eq $latestPageBy "date") }}
               {{- $pages := (where .Data.Pages.ByDate.Reverse "Type" "post") }}
               {{- range first $latestPageNum $pages }}
-                <li><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time> <a href="{{ .URL }}">
-                {{- partialCached "function/page-title-with-section" . .URL }}
+                <li><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time> <a href="{{ .RelPermalink }}">
+                {{- partialCached "function/page-title-with-section" . .RelPermalink }}
                 </a></li>{{ "" -}}
               {{- end }}
             {{- else }}
               {{- $pages := (where .Data.Pages.ByLastmod.Reverse "Type" "post") }}
               {{- range first $latestPageNum $pages }}
-                <li><time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006-01-02" }}</time> <a href="{{ .URL }}">
+                <li><time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006-01-02" }}</time> <a href="{{ .RelPermalink }}">
                 {{- if .Site.Params.showSectionToTitle }}
-                  {{- partialCached "function/page-title-with-section" . .URL }}
+                  {{- partialCached "function/page-title-with-section" . .RelPermalink }}
                 {{- else }}
-                  {{- partialCached "function/page-title" . .URL }}
+                  {{- partialCached "function/page-title" . .RelPermalink }}
                 {{- end }}
                 </a></li>{{ "" -}}
               {{- end }}

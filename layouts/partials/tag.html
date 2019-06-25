@@ -1,5 +1,5 @@
 {{ $tagPage := $.site.GetPage (printf "/tags/%s" $.tag) }}
 <a href="/tags/{{ $.tag }}/">
   {{- safeHTML $.site.Params.tagmark }}
-  {{- partialCached "function/page-title" $tagPage $tagPage.URL -}}
+  {{- partialCached "function/page-title" $tagPage $tagPage.RelPermalink -}}
 </a>{{ "" -}}

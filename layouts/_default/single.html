@@ -1,11 +1,11 @@
 {{ define "title" -}}
-{{- partialCached "function/page-title-with-section" . .URL }} | {{ .Site.Title }}
+{{- partialCached "function/page-title-with-section" . .RelPermalink }} | {{ .Site.Title }}
 {{- end }}
 
 {{ define "main" }}
     {{ "<!-- _default/single.html start -->" | safeHTML }}
     <header class="has-text-centered">
-      <h1 class="title">{{ partialCached "function/page-title-with-section" . .URL }}</h1>
+      <h1 class="title">{{ partialCached "function/page-title-with-section" . .RelPermalink }}</h1>
 
       <div>
         {{ "<!-- partials/date.html start -->" | safeHTML }}

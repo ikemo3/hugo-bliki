@@ -15,7 +15,7 @@
         <ul class="container">
           {{- range $key, $value := .Data.Terms.ByCount }}
           {{- $tagPage := $.Site.GetPage "taxonomy" (printf "%s/%s" $.Data.Plural $value.Name) }}
-          <li><a href="{{ $tagPage.URL }}">{{ partialCached "function/common-page-title" $tagPage $tagPage.URL }}</a>: {{ $value.Count }}</li>
+          <li><a href="{{ $tagPage.RelPermalink }}">{{ partialCached "function/common-page-title" $tagPage $tagPage.RelPermalink }}</a>: {{ $value.Count }}</li>
           {{- end }}
         </ul>
       </div>

@@ -19,7 +19,7 @@
             {{ $filteredTagPages := where (where $tagPages "Kind" "page") "Section" $.Section -}}
             {{ if $filteredTagPages -}}
               {{ $tagPage := $.Site.GetPage "taxonomy" (print "tags/" $tagName) -}}
-              <h3>{{ partialCached "function/page-title" $tagPage $tagPage.URL }}</h3>
+              <h3>{{ partialCached "function/page-title" $tagPage $tagPage.RelPermalink }}</h3>
               <ul class="container">
               {{ range $filteredTagPages -}}
                 {{ .Render "li" -}}
