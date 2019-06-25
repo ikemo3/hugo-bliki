@@ -7,8 +7,8 @@
   <ul class="is-size-6">
     {{- range first $latestPageNum $pages }}
     <li>
-      <a href="{{ .URL }}">
-        {{- partialCached "function/page-title" . .URL }}
+      <a href="{{ .RelPermalink }}">
+        {{- partialCached "function/page-title" . .RelPermalink }}
       </a>
     </li>{{ "" -}}
     {{- end }}

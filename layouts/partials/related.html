@@ -6,8 +6,8 @@
   <ul class="is-size-6">
     {{- range . }}
     <li>
-      <a href="{{ .URL }}">
-        {{- partialCached "function/page-title-with-section" . .URL }}
+      <a href="{{ .RelPermalink }}">
+        {{- partialCached "function/page-title-with-section" . .RelPermalink }}
       </a>
     </li>{{ "" -}}
     {{- end }}

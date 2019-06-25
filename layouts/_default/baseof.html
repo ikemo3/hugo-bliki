@@ -33,7 +33,7 @@
     {{ template "_internal/opengraph.html" . }}
     {{ "<!-- _internal/opengraph.html end -->" | safeHTML }}
 
-    {{ .Hugo.Generator }}
+    {{ hugo.Generator }}
   </head>
   <body>
     {{ partial "menu" . }}
