@@ -1,4 +1,4 @@
 <li>
   <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006-01-02" }}</time>
-  <a href="{{ .RelPermalink }}">{{ partialCached "function/page-title" . .Relpermalink }}</a>
+  <a href="{{ .RelPermalink }}">{{ partialCached "function/page-title" . .RelPermalink }}</a>
 </li>{{ "" -}}
