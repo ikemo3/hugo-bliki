@@ -14,7 +14,7 @@
           </time>
         </span>
         <span>
-          現在の記事数: {{ (where .Data.Pages "Type" "post") | len }}
+          現在の記事数: {{ (where .Site.RegularPages "Type" "post") | len }}
         </span>
       </span>
     </header>
@@ -30,14 +30,14 @@
             {{- $latestPageNum := (default 10 .Site.Params.latestPageNum) }}
             {{- $latestPageBy := (default "lastmod" .Site.Params.latestPageBy) }}
             {{- if (eq $latestPageBy "date") }}
-              {{- $pages := (where .Data.Pages.ByDate.Reverse "Type" "post") }}
+              {{- $pages := (where .Site.RegularPages.ByDate.Reverse "Type" "post") }}
               {{- range first $latestPageNum $pages }}
                 <li><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time> <a href="{{ .RelPermalink }}">
                 {{- partialCached "function/page-title-with-section" . .RelPermalink }}
                 </a></li>{{ "" -}}
               {{- end }}
             {{- else }}
-              {{- $pages := (where .Data.Pages.ByLastmod.Reverse "Type" "post") }}
+              {{- $pages := (where .Site.RegularPages.ByLastmod.Reverse "Type" "post") }}
               {{- range first $latestPageNum $pages }}
                 <li><time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006-01-02" }}</time> <a href="{{ .RelPermalink }}">
                 {{- if .Site.Params.showSectionToTitle }}
