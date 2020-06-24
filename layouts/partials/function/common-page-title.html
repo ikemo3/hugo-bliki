@@ -7,7 +7,7 @@
   * それ以外の場合
     * ページのタイトルを返す。
  -->
-{{- if (eq .Kind "taxonomy") -}}
+{{- if (eq .Kind "term") -}}
   <!-- タグ名を取得 -->
   {{- $tagName := .Data.Term -}}
 
