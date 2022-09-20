@@ -38,6 +38,10 @@
   <body>
     {{ partial "menu" . }}
 
+    {{ "<!-- partials/extension/head.html start -->" | safeHTML }}
+    {{- partial "extension/head" . }}
+    {{ "<!-- partials/extension/head.html end -->" | safeHTML }}
+
     <main>
     {{ block "main" . }}
     {{ end }}
