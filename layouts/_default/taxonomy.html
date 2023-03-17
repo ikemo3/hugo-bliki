@@ -3,8 +3,9 @@
 {{- end }}
 
 {{ define "main" }}
-{{- $taxonomyParams := .Site.Params.taxonomy }}
-{{- $groupBySection := $taxonomyParams.groupbysection }}
+  {{ "<!-- _default/taxonomy.html start -->" | safeHTML }}
+  {{- $taxonomyParams := .Site.Params.taxonomy }}
+  {{- $groupBySection := $taxonomyParams.groupbysection }}
   <header class="has-text-centered">
     <h1 class="title">{{ partialCached "function/page-title-with-section" . .RelPermalink }}</h1>
   </header>
@@ -45,4 +46,5 @@
       </div>
     </div>
   </section>
+  {{ "<!-- _default/taxonomy.html end -->" | safeHTML }}
 {{ end }}
