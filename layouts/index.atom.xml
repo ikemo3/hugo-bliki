@@ -10,7 +10,7 @@
      <name>ikemo</name>
   </author>
   <generator>Hugo -- gohugo.io</generator>
-  {{ range .Data.Pages }}
+  {{ range .Site.RegularPages }}
   <entry>
     <id>{{ .Permalink }}</id>
     <published>{{ .Date.Format "2006-01-02T15:04:05+09:00" | safeHTML }}</published>
